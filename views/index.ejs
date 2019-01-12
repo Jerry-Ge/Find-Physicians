@@ -1,0 +1,43 @@
+<% include partials/header %> 
+
+<div class="container">
+      <form method="POST" action="/query">
+        <label>FirstName</label><br>
+        <input type="text" name="first_name">
+        <br>
+
+        <label>MiddleName</label><br>
+        <input type="text" name="middle_name">
+      
+        <br>
+        <label>LastName</label><br>
+        <input type="text" name="last_name">
+      
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+        var myLatLng = {lat: 34.029261, lng: -118.289459};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDS3LZoWaHpV-S1u-AFCqSoWbpY0l16eQ
+&callback=initMap">
+    </script>
+
+
+<% include partials/footer %> 
