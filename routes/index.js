@@ -26,7 +26,7 @@ router.post("/query", function(req, res){
 	// console.log(req.body.last_name);
  	
  	var addr = "";
- 	Physician.find({first_name : req.body.first_name, middle_name : req.body.middle_name, last_name : req.body.last_name})
+ 	Physician.find({first_name : req.body.first_name.toLowerCase(), middle_name : req.body.middle_name.toLowerCase(), last_name : req.body.last_name.toLowerCase()})
  	.then(physicians => {
  		
  		physicians.forEach(function(people){
