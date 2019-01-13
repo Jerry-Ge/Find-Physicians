@@ -31,6 +31,6 @@ app.use(expressValidator());
 app.use("/", indexRoutes);
 
 
-app.listen(3000, function(){
+app.listen(80, function(){
 	console.log('Server Started On Port 80...');
 })
