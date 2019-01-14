@@ -20,15 +20,16 @@ router.get("/", function(req, res){
 var mlocation = {};
 //handle the addr query from index page
 router.post("/query", function(req, res){
-
-	// console.log(req.body.first_name);
-	// console.log(req.body.middle_name);
-	// console.log(req.body.last_name);
  	
  	var addr = "";
  	Physician.find({first_name : req.body.first_name.toLowerCase(), middle_name : req.body.middle_name.toLowerCase(), last_name : req.body.last_name.toLowerCase()})
  	.then(physicians => {
- 		
+ 		//check if the result array is empty
+ 		if(physicians.length < 1 || physicians == undefined){
+    		res.render('notfound'); 
+		}
+
+
  		physicians.forEach(function(people){
  			console.log(people.addr_line1);
  			addr += people.addr_line1;
@@ -58,23 +59,20 @@ router.post("/query", function(req, res){
 				mlocation["lng"] = lng;
 				mlocation["lat"] = lat;
 
-				res.render("show", {location : mlocation});
+				var mAddr = data[0].formattedAddress;
+
+				res.render("show", {location : mlocation, addr : mAddr});
 			});
 
  		});
  		console.log("Success")
  	})
  	.catch(err => {
- 		console.log(err.message)
+ 		console.log("here");
+ 		console.log(err.message);
+ 		res.render('notfound'); 
+
  	})
- 
-	//res.redirect('/'); 
-
-	// Physicans.find({ id : 110001}, function(err, user) {
-	// 	if (err) throw err;
-
-	// 	console.log(user.last_name);
-	// })
 });
 
 module.exports = router;

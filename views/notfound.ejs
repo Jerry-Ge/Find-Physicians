@@ -1,9 +1,8 @@
 <% include partials/header %> 
 
 <div class="container">
-
-      <h4> Please Type the Name of the Physician You want to search </h4>
-      <form method="POST" action="/query" name="Form">
+<h4> Please Type In the Name of the Physician You want to search </h4>
+      <form method="POST" action="/query">
         <label>FirstName</label><br>
         <input type="text" name="first_name">
         <br>
@@ -19,6 +18,8 @@
         <input onclick="return validateForm();" type="submit" value="Submit"/>
       </form>
     </div>
+
+    <h3 style="color:red"> Physician Not Found! Please Search Again </h3>  
 
 
     <script type="text/javascript">
