@@ -60,8 +60,11 @@ router.post("/query", function(req, res){
 				mlocation["lat"] = lat;
 
 				var mAddr = data[0].formattedAddress;
-
-				res.render("show", {location : mlocation, addr : mAddr});
+				var mName = "";
+				var fullName = people.first_name.charAt(0).toUpperCase() + people.first_name.slice(1) + " "
+				 + people.middle_name.charAt(0).toUpperCase() + people.middle_name.slice(1) + " "
+				  + people.last_name.charAt(0).toUpperCase() + people.last_name.slice(1);
+				res.render("show", {location : mlocation, addr : mAddr, mName : fullName});
 			});
 
  		});
