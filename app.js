@@ -7,7 +7,7 @@ var expressValidator = require('express-validator');
 
 mongoose = require("mongoose");
 Physicians = require("./models/physicians");
-mongoose.connect("mongodb://localhost:27017/medical");
+mongoose.connect("mongodb://localhost:27017/medical", { useNewUrlParser: true });
 
 //requiring routes
 var indexRoutes = require("./routes/index")
